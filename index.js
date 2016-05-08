@@ -1,15 +1,17 @@
-function pkgBinPathsAsync(input) {
-  if (typeof input !== 'string') {
-    return Promise.reject(new TypeError(`\input\` should be \`String\`, got \`${typeof input}\``));
-  }
-  return Promise.resolve(input);
+import R from 'ramda';
+import contract from 'neat-contract';
+
+// pkgBinPaths :: Object -> [String]
+function pkgBinPaths(pkg) {
+  return R.pipe(
+    contract('pkg', Object),
+    R.prop('bin'),
+    R.cond([
+      [R.is(String), R.of],
+      [R.is(Object), R.pipe(R.values, R.map(contract('pkg.bin.item', String)))],
+      [R.T, (item) => { throw new TypeError('`pkg` should be an `Object|String`, but got `' + R.type(item) + '`: ' + item) }]
+    ])
+  )(pkg);
 }
 
-function pkgBinPaths(input) {
-  if (typeof input !== 'string') {
-    throw new TypeError(`\input\` should be \`String\`, got \`${typeof input}\``);
-  }
-  return input;
-}
-
-export { pkgBinPaths, pkgBinPathsAsync };
+export default pkgBinPaths;
