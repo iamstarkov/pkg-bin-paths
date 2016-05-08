@@ -1,18 +1,17 @@
 import test from 'ava';
-import { pkgBinPaths, pkgBinPathsAsync } from './index';
+import pkgBinPaths from './index';
 
-test('basic', t => t.is(
-  pkgBinPaths('unicorns'),
-  'unicorns'
+test('string', t => t.deepEqual(
+  pkgBinPaths({ bin: './cli.js' }),
+  ['./cli.js']
 ));
 
+test('object', t => t.deepEqual(
+  pkgBinPaths({ bin: { one: './one.js', two: './two.js' } }),
+  ['./one.js', './two.js']
+));
+
+test('invalid pkg.bin', t => t.throws(() => { pkgBinPaths({ bin: 2 }); }, TypeError));
+test('invalid pkg.bin.item', t => t.throws(() => { pkgBinPaths({ bin: { one: 2 } }); }, TypeError));
 test('empty input', t => t.throws(() => { pkgBinPaths(); }, TypeError));
 test('invalid input', t => t.throws(() => { pkgBinPaths(2); }, TypeError));
-
-test('async :: basic', async t => t.is(
-  await pkgBinPathsAsync('unicorns'),
-  'unicorns'
-));
-
-test('async :: empty input', t => t.throws(pkgBinPathsAsync(), TypeError));
-test('async :: invalid input', t => t.throws(pkgBinPathsAsync(2), TypeError));
