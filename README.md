@@ -15,36 +15,25 @@
 ## Usage
 
 ```js
-import { pkgBinPaths, pkgBinPathsAsync } from 'pkg-bin-paths';
+import pkgBinPaths from 'pkg-bin-paths';
 
-pkgBinPaths('unicorns'); // unicorns
-pkgBinPathsAsync('unicorns')
-  .then(result => console.log(result)); // unicorns
+pkgBinPaths({ bin: './cli.js' });
+  // ['./cli.js']
+
+pkgBinPaths({ bin: { one: './one.js', two: './two.js' } });
+  // ['./one.js', './two.js']
 ```
 
 ## API
 
-### pkgBinPaths(input, [options])
+### pkgBinPaths(pkg)
 
-### pkgBinPathsAsync(input, [options])
-
-Return a promise that resolves to `result`.
-
-#### input
+#### pkg
 
 *Required*  
-Type: `String`
+Type: `Object`
 
-Lorem ipsum.
-
-#### options
-
-##### foo
-
-Type: `Boolean`  
-Default: `false`
-
-Lorem ipsum.
+`package.json` you are approaching.
 
 ## License
 
