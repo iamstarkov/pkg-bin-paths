@@ -56,7 +56,7 @@
     "rimraf": "^2.5.2"
   },
   "dependencies": {
-    "neat-contract": "^1.0.1",
+    "neat-contract": "^1.1.0",
     "ramda": "^0.21.0"
   }
 }
