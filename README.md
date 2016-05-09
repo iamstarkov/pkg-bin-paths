@@ -17,6 +17,9 @@
 ```js
 import pkgBinPaths from 'pkg-bin-paths';
 
+pkgBinPaths({});
+  // []
+
 pkgBinPaths({ bin: './cli.js' });
   // ['./cli.js']
 
