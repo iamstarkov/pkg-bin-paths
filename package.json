@@ -1,6 +1,6 @@
 {
   "name": "pkg-bin-paths",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "expose binary paths from object",
   "main": "index.es5.js",
   "jsnext:main": "index.js",
