@@ -1,6 +1,11 @@
 import test from 'ava';
 import pkgBinPaths from './index';
 
+test('empty', t => t.deepEqual(
+  pkgBinPaths({}),
+  []
+));
+
 test('string', t => t.deepEqual(
   pkgBinPaths({ bin: './cli.js' }),
   ['./cli.js']
