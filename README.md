@@ -1,5 +1,7 @@
 # pkg-bin-paths
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/iamstarkov/pkg-bin-paths.svg)](https://greenkeeper.io/)
+
 [![NPM version][npm-image]][npm-url]
 [![Unix Build Status][travis-image]][travis-url]
 [![Windows Build Status][appveyor-image]][appveyor-url]
